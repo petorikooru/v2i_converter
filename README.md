@@ -21,9 +21,14 @@ python main.py
 ```
 
 ## Instruction
-- Frame Leap
-Basically skip frame for every frame rate of that video
+- Frame Leap : 
+Basically skip frames for every frame leap of that video
 > eg : 60 fps video + 10 frames leap = 6 frames extracted
+
+# To be Added
+- Previewer
+- Slider for adjusting time
+- idk
 
 ## Credits
 - LTI Team
