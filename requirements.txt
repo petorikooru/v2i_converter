@@ -1,2 +1,2 @@
-PySide6
+PyQt6-tools
 ffmpeg-python
