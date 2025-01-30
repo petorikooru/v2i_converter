@@ -32,9 +32,3 @@ python main.py
 
 6. Set the frame's quality you want (lower quality means lower disk usage) (The default is Medium)
 7. Convert!
-
-## Credits
-- LTI Team
-- QT
-- ffmpeg-python
-- ChatGPT (i love chatgpt, such a godsend creation)
