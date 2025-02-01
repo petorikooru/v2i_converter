@@ -52,6 +52,10 @@ class MainController(QWidget):
         self.ui.start_box.timeChanged.connect(self.check_time)
         self.ui.end_box.timeChanged.connect(self.check_time)
 
+        # Disable the timestamp at first
+        self.ui.start_box.setEnabled(False)
+        self.ui.end_box.setEnabled(False)
+
         # Connect Frame Leap Box
         self.ui.leap_box.valueChanged.connect(self.select_frame_leap)
         self.ui.leap_box.setRange(1, 1000)
@@ -138,15 +142,15 @@ class MainController(QWidget):
 
     def check_time(self, qtime):
         self.start_time = self.retrive_time(self.ui.start_box)
-        end_time = self.retrive_time(self.ui.end_box)
+        self.nd_time = self.retrive_time(self.ui.end_box)
 
-        if self.start_time > end_time:
+        if self.start_time > self.end_time:
             QMessageBox.warning(
                 self, "Invalid Time Range",
                 "Please set the start time below the end time."
             )
             self.ui.start_box.setTime(self.ui.end_box.time())
-        elif end_time < self.start_time:
+        elif self.end_time < self.start_time:
             QMessageBox.warning(
                 self, "Invalid Time Range",
                 "Please set the end time above the start time."
@@ -159,6 +163,10 @@ class MainController(QWidget):
         return total_seconds
 
     def enable_convert(self):
+        if self.video_path:
+            self.ui.start_box.setEnabled(True)
+            self.ui.end_box.setEnabled(True)
+            
         if self.video_path and self.output_path:
             self.ui.convert_button.setEnabled(True)
         else:
